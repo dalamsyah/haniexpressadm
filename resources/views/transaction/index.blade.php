@@ -9,7 +9,7 @@
         </div>
         <div class="pull-right">
             @can('transaction-create')
-                <a class="btn btn-success" href="{{ route('transaction.create') }}"> Buat Transaksi Baru</a>
+                <a class="btn bg-gradient-success" href="{{ route('transaction.create') }}"> Buat Transaksi Baru</a>
             @endcan
         </div>
     </div>
@@ -72,7 +72,7 @@
 
     <div class="col-xs-1 col-sm-1 col-md-1" style="">
         <div class="form-group">
-            <button type="submit" class="btn btn-success form-control" style="margin-top: 23px">Filter</button>
+            <button type="submit" class="btn bg-gradient-success" style="margin-top: 23px">Filter</button>
         </div>
     </div>
 
@@ -90,90 +90,90 @@
 
 
 <div class="row">
-    <div class="col-xs-2 col-sm-2 col-md-2">
-        <div class="form-group">
-            <a href="{{ route('print.index') }}" class="btn btn-success form-control">Cetak</a>
-        </div>
+    <div class="col-sm-2">
+        <a href="{{ route('print.index') }}" class="btn bg-gradient-success w-100">Cetak</a>
     </div>
-    {!! Form::open(array('route' => 'transaction.storeprint','method'=>'POST')) !!}
-    <div class="col-md-12" id="formPrint">
-        <div class="form-group">
-            <button type="submit" class="btn btn-success form-control">Tambah ke Cetak</button>
-        </div>
-    </div>
-    {!! Form::close() !!}
 
-    {!! Form::open(array('route' => 'transaction.clearprint','method'=>'POST')) !!}
-    <div class="col-md-12">
-        <div class="form-group">
-            <button type="submit" class="btn btn-danger form-control">Bersihkan semua Cetak</button>
-        </div>
+    <div class="col-sm-2">
+        {!! Form::open(array('route' => 'transaction.storeprint','method'=>'POST')) !!}
+        <div id="formPrint"></div>
+        <button type="submit" class="btn bg-gradient-success w-100">Tambah ke Cetak</button>
+        {!! Form::close() !!}
     </div>
-    {!! Form::close() !!}
+
+    <div class="col-sm-2">
+        {!! Form::open(array('route' => 'transaction.clearprint','method'=>'POST')) !!}
+        <button type="submit" class="btn bg-gradient-danger w-100">Bersihkan semua Cetak</button>
+        {!! Form::close() !!}
+    </div>
 </div>
 
 
-<table class="table table-bordered">
- <tbody>
-    <tr>
-        <th>No.</th>
-        <th>Cabang</th>
-        <th>No. Resi</th>
-        <th>Nama Pengirim</th>
-        {{-- <th>Alamat Pengirim</th>
-        <th>No Handphone Pengirim</th> --}}
-        <th>Total Qty</th>
-        <th>Total Biaya</th>
-        <th>Nama Penerima</th>
-        <th>Alamat Penerima</th>
-        <th>No Handphone Penerima</th>
-        <th>Cara Pembayaran</th>
-        <th>Dibuat Tgl</th>
-        <th>Cetak <input type="checkbox" onclick="OnClickCheckboxAll(this)"> </th>
-        <th></th>
-     </tr>
-     @php $index = 0; @endphp
-     @forelse ($datas as $data)
-      <tr class="data_table">
-        <td>{{ ++$i }}.</td>
-        <td style="display: none" id="id_{{ $index }}">{{ $data->id }}</td>
-        <td>{{ $data->cabang }}</td>
-        <td>{{ $data->no_resi }}</td>
-        <td>{{ $data->nama_pengirim }}</td>
-        {{-- <td>{{ $data->alamat_pengirim }}</td>
-        <td>{{ $data->no_handphone_pengirim }}</td> --}}
-        <td>{{ $data->total_qty }}</td>
-        <td class="rupiahWithSymbol" >Rp {{ number_format( $data->total_biaya ) }}</td>
-        <td>{{ $data->nama_penerima }}</td>
-        <td>{{ $data->alamat_penerima }}</td>
-        <td>{{ $data->no_handphone_penerima }}</td>
-        <td>{{ $data->cara_pembayaran }}</td>
-        <td>{{ $data->created_at }}</td>
-        <td><input id="checkbox_{{ $index }}" type="checkbox" onclick="OnClickCheckbox('{{ $data->id }}', this)" /></td>
-        <td>
-           <a class="btn btn-info" href="{{ route('transaction.show',$data->id) }}">Lihat</a>
-    
-            @can('transaction-edit')
-           <a class="btn btn-primary" href="{{ route('transaction.edit',$data->id) }}">Ubah</a>
-            @endcan
-    
-            @can('transaction-delete')
-            {!! Form::open(['method' => 'DELETE','route' => ['transaction.destroy', $data->id],'style'=>'display:inline']) !!}
-                {!! Form::submit('Hapus', ['class' => 'btn btn-danger']) !!}
-            {!! Form::close() !!}
-            @endcan
-        </td>
-      </tr>
- </tbody>
- @php $index++; @endphp
-@empty
-     <tr>
-         <td colspan="12">
-             <p style="text-align: center">Data No found!</p>
-         </td>
-     </tr>
-@endforelse
-</table>
+<div class="row">
+    <div class="col-md-12">
+        <table class="table table-responsive">
+        <tbody>
+            <tr>
+                <th>No.</th>
+                <th>Cabang</th>
+                <th>No. Resi</th>
+                <th>Nama Pengirim</th>
+                {{-- <th>Alamat Pengirim</th>
+                <th>No Handphone Pengirim</th> --}}
+                <th>Total Qty</th>
+                <th>Total Biaya</th>
+                <th>Nama Penerima</th>
+                <th>Alamat Penerima</th>
+                <th>No Handphone Penerima</th>
+                <th>Cara Pembayaran</th>
+                <th>Dibuat Tgl</th>
+                <th>Cetak <input type="checkbox" onclick="OnClickCheckboxAll(this)"> </th>
+                <th></th>
+            </tr>
+            @php $index = 0; @endphp
+            @forelse ($datas as $data)
+            <tr class="data_table">
+                <td>{{ ++$i }}.</td>
+                <td style="display: none" id="id_{{ $index }}">{{ $data->id }}</td>
+                <td>{{ $data->cabang }}</td>
+                <td>{{ $data->no_resi }}</td>
+                <td>{{ $data->nama_pengirim }}</td>
+                {{-- <td>{{ $data->alamat_pengirim }}</td>
+                <td>{{ $data->no_handphone_pengirim }}</td> --}}
+                <td>{{ $data->total_qty }}</td>
+                <td class="rupiahWithSymbol" >Rp {{ number_format( $data->total_biaya ) }}</td>
+                <td>{{ $data->nama_penerima }}</td>
+                <td>{{ $data->alamat_penerima }}</td>
+                <td>{{ $data->no_handphone_penerima }}</td>
+                <td>{{ $data->cara_pembayaran }}</td>
+                <td>{{ $data->created_at }}</td>
+                <td><input id="checkbox_{{ $index }}" type="checkbox" onclick="OnClickCheckbox('{{ $data->id }}', this)" /></td>
+                <td>
+                <a class="btn btn-info" href="{{ route('transaction.show',$data->id) }}">Lihat</a>
+            
+                    @can('transaction-edit')
+                <a class="btn btn-primary" href="{{ route('transaction.edit',$data->id) }}">Ubah</a>
+                    @endcan
+            
+                    @can('transaction-delete')
+                    {!! Form::open(['method' => 'DELETE','route' => ['transaction.destroy', $data->id],'style'=>'display:inline']) !!}
+                        {!! Form::submit('Hapus', ['class' => 'btn btn-danger']) !!}
+                    {!! Form::close() !!}
+                    @endcan
+                </td>
+            </tr>
+        </tbody>
+        @php $index++; @endphp
+        @empty
+            <tr>
+                <td colspan="12">
+                    <p style="text-align: center">Data No found!</p>
+                </td>
+            </tr>
+        @endforelse
+        </table>
+    </div>
+</div>
 
 {{ $datas->links('layouts.pagination') }}
 
