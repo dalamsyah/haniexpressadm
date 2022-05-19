@@ -12,16 +12,33 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
     <script src="{{ asset('js/bootstrap-datepicker.min.js') }}"></script>
 
-{{--    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/js/bootstrap-datepicker.min.js"></script>--}}
-{{--    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/css/bootstrap-datepicker3.css"/>--}}
-
-    <!-- Fonts -->
-    <!--<link rel="dns-prefetch" href="https://fonts.gstatic.com">-->
-    <!--<link href="https://fonts.googleapis.com/css?family=Raleway:300,400,600" rel="stylesheet" type="text/css">-->
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+
+     <!--     Fonts and icons     -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet" />
+
+    <!-- Font Awesome Icons -->
+    <script src="https://kit.fontawesome.com/42d5adcbca.js" crossorigin="anonymous"></script>
+
+    <link href="{{ asset('css/nucleo-icons.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/nucleo-svg.css') }}" rel="stylesheet">
+
+    <link href="{{ asset('css/soft-ui-dashboard.min.css') }}" rel="stylesheet">
+
 </head>
-<body>
+
+<style>
+    .padding-0{
+        padding-right:0;
+        padding-left:0;
+    }
+    .custom {
+        max-width: 150px !important;
+    }
+</style>
+
+<body class="g-sidenav-show bg-gray-100">
 <div id="app">
     <nav class="navbar navbar-expand-md navbar-light navbar-laravel">
         <div class="container-fluid">
