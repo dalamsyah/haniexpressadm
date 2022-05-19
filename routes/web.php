@@ -22,7 +22,7 @@ use App\Http\Controllers\ReportController;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('auth/login');
 });
 
 //
