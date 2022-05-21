@@ -44,7 +44,7 @@ class TransactionController extends Controller
 
         $q_tanggal = "";
         if ($check_tanggal != ""){
-            $q_tanggal = " AND date(`created_at`) BETWEEN '".$request->tanggal_awal."' and '$request->tanggal_akhir' ";
+            $q_tanggal = " AND date(transactions.`created_at`) BETWEEN '".$request->tanggal_awal."' and '$request->tanggal_akhir' ";
         }
 
         $q_cara_pembayaran = "";
